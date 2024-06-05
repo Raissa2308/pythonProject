@@ -1,0 +1,30 @@
+{% extends "modelo.html" %}
+{% block conteudo %}
+<h1>Cursos</h1>
+
+<table class="table table-striped table-responsive table-bordered">
+  <thead class="thead-default">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Curso</th>
+      <th scope="col">Descrição</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for termo in glossario %}
+    <tr>
+      <th scope="row">{{ loop.index }}</th>
+      <td>{{ termo[0] }}</td>
+      <td>{{ termo[1] }}</td>
+      <td>
+        <form method="post" action="{{ url_for('excluir_termo', termo_id=loop.index-1) }}">
+
+        </form>
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
